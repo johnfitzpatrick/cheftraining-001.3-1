@@ -35,6 +35,7 @@ bash "install_splunk" do
  EOH
 end 
 
+log "Updating Splunk Configuration"
 bash "update_splunk_config" do
 cwd node[:splunk][:installdir]
 code <<-EOH

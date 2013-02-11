@@ -35,6 +35,15 @@ bash "install_splunk" do
  EOH
 end 
 
+bash "update_splunk_config" do
+cwd node[:splunk][:installdir]
+code <<-EOH
+  cd splunk/etc/system/
+  wget https://rsed-cheftraining.s3.amazonaws.com/splunk_update.tgz
+  gzip -cd splunk_update.tgz |tar xvf -
+ EOH
+end 
+
 package "tree"
 
 rightscale_marker :end
